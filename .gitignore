@@ -1,0 +1,47 @@
+# Godot generated
+.godot/
+*.uid
+
+# Android build output
+android/build/.gradle/
+android/build/build/
+android/build/libs/debug/
+android/build/libs/release/
+android/build/.cxx/
+
+# Export outputs (binaries)
+build/*.aab
+build/*.apk
+build/*.pck
+build/*.zip
+
+# Keystore & Signing Keys - NEVER commit these
+release.keystore
+debug.keystore
+*.keystore
+*.jks
+*.key
+*.p12
+
+# Temp / scratch
+temp_classes.jar
+*.tmp
+*.bak
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.iml
+misc.xml
+modules.xml
+workspace.xml
+
+# Godot PCK (large binary)
+*.pck

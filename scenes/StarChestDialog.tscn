@@ -1,0 +1,137 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/star_chest_dialog.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal"]
+bg_color = Color(0.12, 0.1, 0.18, 0.98)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.8, 0.2, 0.8)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0, 0, 0, 0.65)
+shadow_size = 32
+shadow_offset = Vector2(0, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_claim_btn"]
+bg_color = Color(1, 0.75, 0.1, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(1, 0.75, 0.1, 0.4)
+shadow_size = 14
+shadow_offset = Vector2(0, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_reward_box"]
+bg_color = Color(0.2, 0.16, 0.08, 0.85)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.8, 0.3, 0.5)
+
+[node name="StarChestDialog" type="Control"]
+z_index = 210
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.03, 0.06, 0.88)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModalPanel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(800, 780)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/ModalPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 26
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/ModalPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.25, 1)
+theme_override_font_sizes/font_size = 38
+text = "🎁 MILESTONE STAR CHEST!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SubLabel" type="Label" parent="CenterContainer/ModalPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.85, 0.95, 1)
+theme_override_font_sizes/font_size = 26
+text = "LEVEL 10 MASTERED!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ChestIcon" type="Label" parent="CenterContainer/ModalPanel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 110
+text = "🎁"
+horizontal_alignment = 1
+
+[node name="RewardBox" type="PanelContainer" parent="CenterContainer/ModalPanel/VBox"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_reward_box")
+
+[node name="RewardLabel" type="Label" parent="CenterContainer/ModalPanel/VBox/RewardBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 28
+text = "Tap to open your mystery chest!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="CenterContainer/ModalPanel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClaimButton" type="Button" parent="CenterContainer/ModalPanel/VBox"]
+custom_minimum_size = Vector2(0, 114)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.08, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_claim_btn")
+text = "TAP TO OPEN ✨"
+clip_text = true

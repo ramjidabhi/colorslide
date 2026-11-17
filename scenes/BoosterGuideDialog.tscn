@@ -1,0 +1,227 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/booster_guide_dialog.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal"]
+bg_color = Color(0.1, 0.12, 0.18, 0.98)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.75, 0.2, 0.8)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0, 0, 0, 0.65)
+shadow_size = 32
+shadow_offset = Vector2(0, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smash_card"]
+bg_color = Color(0.2, 0.11, 0.15, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9, 0.25, 0.35, 0.7)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shrink_card"]
+bg_color = Color(0.08, 0.18, 0.22, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.15, 0.8, 0.85, 0.7)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crane_card"]
+bg_color = Color(0.2, 0.17, 0.1, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.75, 0.2, 0.7)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_claim_btn"]
+bg_color = Color(0.08, 0.76, 0.55, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(0.08, 0.76, 0.55, 0.4)
+shadow_size = 12
+shadow_offset = Vector2(0, 6)
+
+[node name="BoosterGuideDialog" type="Control"]
+z_index = 220
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.05, 0.08, 0.88)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModalPanel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(860, 960)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/ModalPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = 34.0
+offset_right = -36.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/ModalPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.25, 1)
+theme_override_font_sizes/font_size = 38
+text = "🎉 BOOSTERS UNLOCKED!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SubLabel" type="Label" parent="CenterContainer/ModalPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.9, 0.98, 1)
+theme_override_font_sizes/font_size = 22
+text = "Congratulations on clearing Level 5!
+Here is your Free Starter Pack (3x of Each):"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CardSmash" type="PanelContainer" parent="CenterContainer/ModalPanel/VBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_smash_card")
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/ModalPanel/VBox/CardSmash"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/ModalPanel/VBox/CardSmash/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Header" type="Label" parent="CenterContainer/ModalPanel/VBox/CardSmash/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.45, 0.55, 1)
+theme_override_font_sizes/font_size = 24
+text = "🔨 1. SLEDGEHAMMER (SMASH)"
+
+[node name="Desc" type="Label" parent="CenterContainer/ModalPanel/VBox/CardSmash/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 20
+text = "① Tap [🔨 SMASH] in bottom dock to enter Smash Mode.
+② Tap any blocking obstacle on the board.
+③ Block explodes into shards & disappears! (Red block protected)"
+autowrap_mode = 3
+
+[node name="CardShrink" type="PanelContainer" parent="CenterContainer/ModalPanel/VBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_shrink_card")
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/ModalPanel/VBox/CardShrink"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/ModalPanel/VBox/CardShrink/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Header" type="Label" parent="CenterContainer/ModalPanel/VBox/CardShrink/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.9, 0.95, 1)
+theme_override_font_sizes/font_size = 24
+text = "✂️ 2. SHRINK RAY (SHORTEN)"
+
+[node name="Desc" type="Label" parent="CenterContainer/ModalPanel/VBox/CardShrink/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 20
+text = "① Tap [✂️ SHRINK] in bottom dock to enter Shrink Mode.
+② Tap any 2-unit or 3-unit obstacle block.
+③ Block shrinks by 1 cell (3→2, 2→1x1) to immediately free space!"
+autowrap_mode = 3
+
+[node name="CardCrane" type="PanelContainer" parent="CenterContainer/ModalPanel/VBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_crane_card")
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/ModalPanel/VBox/CardCrane"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/ModalPanel/VBox/CardCrane/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Header" type="Label" parent="CenterContainer/ModalPanel/VBox/CardCrane/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.35, 1)
+theme_override_font_sizes/font_size = 24
+text = "🧲 3. CRANE PICKER (RELOCATE)"
+
+[node name="Desc" type="Label" parent="CenterContainer/ModalPanel/VBox/CardCrane/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 20
+text = "① Tap [🧲 CRANE] in bottom dock.
+② Tap any trapped block to LIFT it up.
+③ Tap any empty cell on the board to DROP & place it anywhere!"
+autowrap_mode = 3
+
+[node name="ClaimButton" type="Button" parent="CenterContainer/ModalPanel/VBox"]
+custom_minimum_size = Vector2(0, 84)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_claim_btn")
+theme_override_font_sizes/font_size = 28
+text = "CLAIM 3x BOOSTERS & PLAY ▶"
+clip_text = true

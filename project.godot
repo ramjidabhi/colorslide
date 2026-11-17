@@ -1,0 +1,71 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[admob]
+
+config/app_id="ca-app-pub-6827648916951660~3848367705"
+config/rewarded_ad_id="ca-app-pub-6827648916951660/1711113358"
+config/banner_id=""
+config/interstitial_id=""
+
+[application]
+
+config/name="Unblock Puzzle: Slide Escape"
+config/description="Unblock Puzzle: Slide Escape — 200 tactile brain puzzles with ice blocks, laser gates, Daily Challenge & 60s Blitz!"
+config/version="1.0.0"
+run/main_scene="res://scenes/MainMenu.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.svg"
+boot_splash/show_image=true
+boot_splash/image="res://assets/splash.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=true
+boot_splash/bg_color=Color(0.06, 0.07, 0.11, 1)
+
+[autoload]
+
+SoundManager="*res://scripts/sound_manager.gd"
+MonetizationManager="*res://scripts/monetization_manager.gd"
+GameManager="*res://scripts/game_manager.gd"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=1920
+window/size/window_width_override=540
+window/size/window_height_override=960
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[dotnet]
+
+project/assembly_name="Unblock Puzzle- Slide Escape"
+
+[gui]
+
+theme/custom="res://assets/themes/app_theme.tres"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://localization/strings.en.translation", "res://localization/strings.es.translation", "res://localization/strings.de.translation", "res://localization/strings.fr.translation", "res://localization/strings.ja.translation", "res://localization/strings.pt.translation", "res://localization/strings.ko.translation", "res://localization/strings.id.translation")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.09, 0.1, 0.14, 1)
+anti_aliasing/quality/msaa_2d=0
+textures/canvas_textures/default_texture_filter=2
+textures/vram_compression/import_etc2_astc=true

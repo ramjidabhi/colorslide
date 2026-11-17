@@ -1,0 +1,235 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/piggy_bank_dialog.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal"]
+bg_color = Color(0.11, 0.09, 0.16, 0.98)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.45, 0.65, 0.85)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0, 0, 0, 0.65)
+shadow_size = 32
+shadow_offset = Vector2(0, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bubble"]
+bg_color = Color(0.18, 0.14, 0.24, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.6, 0.78, 0.65)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_status"]
+bg_color = Color(0.16, 0.13, 0.22, 0.9)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.8, 0.3, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smash_btn"]
+bg_color = Color(0.95, 0.38, 0.55, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(0.95, 0.38, 0.55, 0.4)
+shadow_size = 14
+shadow_offset = Vector2(0, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_boost_btn"]
+bg_color = Color(0.18, 0.16, 0.26, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.75, 0.2, 0.8)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(1, 0.75, 0.2, 0.25)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_close_btn"]
+bg_color = Color(0.16, 0.2, 0.3, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.28, 0.35, 0.5, 0.6)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="PiggyBankDialog" type="Control"]
+z_index = 175
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.03, 0.07, 0.88)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModalPanel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(880, 1120)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/ModalPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 44
+theme_override_constants/margin_top = 52
+theme_override_constants/margin_right = 44
+theme_override_constants/margin_bottom = 44
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/ModalPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 0
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/ModalPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.65, 0.8, 1)
+theme_override_font_sizes/font_size = 44
+text = "🐷 COIN PIGGY BANK"
+horizontal_alignment = 1
+
+[node name="DescLabel" type="Label" parent="CenterContainer/ModalPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.8, 0.9, 1)
+theme_override_font_sizes/font_size = 22
+text = "Earn +25 bonus coins deposited with every puzzle you solve!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SpeechBubble" type="PanelContainer" parent="CenterContainer/ModalPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bubble")
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/ModalPanel/Margin/VBox/SpeechBubble"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 6
+
+[node name="SpeechLabel" type="Label" parent="CenterContainer/ModalPanel/Margin/VBox/SpeechBubble/Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 22
+text = "✨ Oink! Tap me to shake coins!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PiggyCenter" type="CenterContainer" parent="CenterContainer/ModalPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 210)
+layout_mode = 2
+
+[node name="PiggyBtn" type="Button" parent="CenterContainer/ModalPanel/Margin/VBox/PiggyCenter"]
+custom_minimum_size = Vector2(260, 200)
+layout_mode = 2
+flat = true
+
+[node name="PiggyMascot" type="Control" parent="CenterContainer/ModalPanel/Margin/VBox/PiggyCenter/PiggyBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TapHintLabel" type="Label" parent="CenterContainer/ModalPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.78, 0.85)
+theme_override_font_sizes/font_size = 18
+text = "👇 Tap Piggy to hear coins rattle!"
+horizontal_alignment = 1
+
+[node name="StatusBox" type="PanelContainer" parent="CenterContainer/ModalPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_status")
+
+[node name="CoinsStatusLabel" type="Label" parent="CenterContainer/ModalPanel/Margin/VBox/StatusBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.28, 1)
+theme_override_font_sizes/font_size = 24
+text = "🪙 250 / 1000 COINS STORED"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ProgressContainer" type="Control" parent="CenterContainer/ModalPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+
+[node name="SmashButton" type="Button" parent="CenterContainer/ModalPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 104)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_smash_btn")
+text = "🔨 SMASH & CLAIM (+250 COINS)"
+clip_text = true
+
+[node name="BoostButton" type="Button" parent="CenterContainer/ModalPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 78)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_boost_btn")
+text = "🎁 FREE DAILY BOOST (+50 🪙)"
+clip_text = true
+
+[node name="CloseButton" type="Button" parent="CenterContainer/ModalPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 76)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.9, 0.98, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_close_btn")
+text = "BACK TO GAME"
+clip_text = true

@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" width="720" height="720">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF5252"/>
+      <stop offset="50%" stop-color="#FF2E56"/>
+      <stop offset="100%" stop-color="#D61B3C"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE"/>
+      <stop offset="100%" stop-color="#01A3A4"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE066"/>
+      <stop offset="50%" stop-color="#FFD13B"/>
+      <stop offset="100%" stop-color="#FF9F43"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A55EEA"/>
+      <stop offset="100%" stop-color="#5F27CD"/>
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="70%" stop-color="#E2E8F0"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+    <linearGradient id="beamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FFB2" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00FFB2" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#00FFB2" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E2333"/>
+      <stop offset="100%" stop-color="#131622"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Ambient background glow aura -->
+  <circle cx="360" cy="300" r="260" fill="#FF2E56" opacity="0.12" filter="url(#glow)"/>
+  <circle cx="360" cy="300" r="180" fill="#00D2D3" opacity="0.08" filter="url(#glow)"/>
+
+  <!-- Centered Interactive Game Emblem Card -->
+  <g filter="url(#dropShadow)">
+    <rect x="180" y="120" width="360" height="360" rx="44" fill="url(#cardGrad)" stroke="#2F364E" stroke-width="4"/>
+    
+    <!-- Grid Slot Lines -->
+    <line x1="240" y1="120" x2="240" y2="480" stroke="#252B3D" stroke-width="3" stroke-dasharray="6 6"/>
+    <line x1="300" y1="120" x2="300" y2="480" stroke="#252B3D" stroke-width="3" stroke-dasharray="6 6"/>
+    <line x1="360" y1="120" x2="360" y2="480" stroke="#252B3D" stroke-width="3" stroke-dasharray="6 6"/>
+    <line x1="420" y1="120" x2="420" y2="480" stroke="#252B3D" stroke-width="3" stroke-dasharray="6 6"/>
+    <line x1="480" y1="120" x2="480" y2="480" stroke="#252B3D" stroke-width="3" stroke-dasharray="6 6"/>
+
+    <line x1="180" y1="180" x2="540" y2="180" stroke="#252B3D" stroke-width="3" stroke-dasharray="6 6"/>
+    <line x1="180" y1="240" x2="540" y2="240" stroke="#252B3D" stroke-width="3" stroke-dasharray="6 6"/>
+    <line x1="180" y1="300" x2="540" y2="300" stroke="#252B3D" stroke-width="3" stroke-dasharray="6 6"/>
+    <line x1="180" y1="360" x2="540" y2="360" stroke="#252B3D" stroke-width="3" stroke-dasharray="6 6"/>
+    <line x1="180" y1="420" x2="540" y2="420" stroke="#252B3D" stroke-width="3" stroke-dasharray="6 6"/>
+
+    <!-- Exit Portal on Right Edge -->
+    <rect x="532" y="246" width="16" height="108" rx="8" fill="url(#beamGrad)" filter="url(#softGlow)"/>
+
+    <!-- Puzzle Obstacle 1: Amber Horizontal Block -->
+    <rect x="246" y="128" width="168" height="48" rx="16" fill="url(#goldGrad)" opacity="0.95"/>
+    <circle cx="270" cy="152" r="4" fill="#FFFFFF" opacity="0.6"/>
+    <circle cx="390" cy="152" r="4" fill="#FFFFFF" opacity="0.6"/>
+
+    <!-- Puzzle Obstacle 2: Cyan Vertical Block -->
+    <rect x="368" y="188" width="48" height="168" rx="16" fill="url(#cyanGrad)" opacity="0.95"/>
+    <circle cx="392" cy="212" r="4" fill="#FFFFFF" opacity="0.6"/>
+    <circle cx="392" cy="332" r="4" fill="#FFFFFF" opacity="0.6"/>
+
+    <!-- Puzzle Obstacle 3: Purple Vertical Block -->
+    <rect x="428" y="308" width="48" height="156" rx="16" fill="url(#purpleGrad)" opacity="0.95"/>
+
+    <!-- The Hero Red Target Block (Gliding towards exit) -->
+    <g filter="url(#glow)">
+      <!-- Motion Ghost Trail -->
+      <rect x="196" y="248" width="180" height="104" rx="26" fill="#FF2E56" opacity="0.25"/>
+      <rect x="236" y="248" width="180" height="104" rx="26" fill="#FF2E56" opacity="0.45"/>
+      <!-- Main Hero Block Body -->
+      <rect x="276" y="248" width="180" height="104" rx="26" fill="url(#heroGrad)" stroke="#FFA8B8" stroke-width="4"/>
+      <!-- Inner Specular Highlight -->
+      <rect x="286" y="254" width="160" height="18" rx="9" fill="#FFFFFF" opacity="0.4"/>
+      <!-- Escape Arrow Indicator -->
+      <path d="M 390 300 L 360 282 L 360 318 Z" fill="#FFFFFF" opacity="0.95"/>
+      <circle cx="334" cy="300" r="7" fill="#FFFFFF" opacity="0.95"/>
+      <!-- Mini Golden Crown Jewel -->
+      <path d="M 334 274 L 324 286 L 334 284 L 344 286 Z" fill="url(#goldGrad)"/>
+    </g>
+  </g>
+
+  <!-- Game Title Typography -->
+  <!-- "UNBLOCK PUZZLE" -->
+  <text x="360" y="556" 
+        text-anchor="middle" 
+        font-family="'Nunito', 'Segoe UI', Arial, sans-serif" 
+        font-size="46" 
+        font-weight="900" 
+        letter-spacing="4" 
+        fill="url(#titleGrad)"
+        filter="url(#dropShadow)">
+    UNBLOCK PUZZLE
+  </text>
+
+  <!-- "SLIDE ESCAPE" Subtitle with Pill Tag -->
+  <g filter="url(#softGlow)">
+    <rect x="236" y="582" width="248" height="36" rx="18" fill="#1E2333" stroke="#00FFB2" stroke-width="2"/>
+    <text x="360" y="607" 
+          text-anchor="middle" 
+          font-family="'Nunito', 'Segoe UI', Arial, sans-serif" 
+          font-size="19" 
+          font-weight="800" 
+          letter-spacing="5" 
+          fill="#00FFB2">
+      SLIDE ESCAPE
+    </text>
+  </g>
+
+  <!-- Interactive Loading Pulse Dots -->
+  <circle cx="330" cy="650" r="5" fill="#FF4757" opacity="0.9"/>
+  <circle cx="360" cy="650" r="5" fill="#00D2D3" opacity="0.9"/>
+  <circle cx="390" cy="650" r="5" fill="#FECA57" opacity="0.9"/>
+</svg>

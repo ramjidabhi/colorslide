@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B1F2F"/>
+      <stop offset="50%" stop-color="#131623"/>
+      <stop offset="100%" stop-color="#0A0C14"/>
+    </linearGradient>
+
+    <!-- Block Gradients -->
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF5252"/>
+      <stop offset="40%" stop-color="#FF2E56"/>
+      <stop offset="100%" stop-color="#D6183B"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE"/>
+      <stop offset="100%" stop-color="#01A3A4"/>
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE066"/>
+      <stop offset="50%" stop-color="#FFB300"/>
+      <stop offset="100%" stop-color="#FF8F00"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A55EEA"/>
+      <stop offset="100%" stop-color="#5F27CD"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2ED573"/>
+      <stop offset="100%" stop-color="#10AC84"/>
+    </linearGradient>
+
+    <!-- Exit Portal Glow -->
+    <linearGradient id="exitBeam" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FFB2" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#00FFB2" stop-opacity="1"/>
+    </linearGradient>
+
+    <!-- Frame Border -->
+    <linearGradient id="frameBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3D4766"/>
+      <stop offset="100%" stop-color="#1F2536"/>
+    </linearGradient>
+
+    <!-- Glow Filters -->
+    <filter id="heroGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="portalGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="blockShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- App Squircle Outer Background -->
+  <rect width="512" height="512" rx="115" fill="url(#bgGrad)"/>
+
+  <!-- Outer Subtle Metallic Rim Highlight -->
+  <rect x="3" y="3" width="506" height="506" rx="112" fill="none" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="3"/>
+
+  <!-- Soft Ambient Radial Lighting from Center -->
+  <circle cx="256" cy="256" r="210" fill="#FF2E56" opacity="0.12" filter="url(#heroGlow)"/>
+  <circle cx="430" cy="256" r="140" fill="#00FFB2" opacity="0.16" filter="url(#portalGlow)"/>
+
+  <!-- Tactile Puzzle Board Frame -->
+  <rect x="52" y="52" width="408" height="408" rx="42" fill="#181C2B" stroke="url(#frameBorder)" stroke-width="6"/>
+
+  <!-- Subtle Inner Grid Tracks -->
+  <line x1="120" y1="52" x2="120" y2="460" stroke="#22283A" stroke-width="3" stroke-dasharray="6 6"/>
+  <line x1="188" y1="52" x2="188" y2="460" stroke="#22283A" stroke-width="3" stroke-dasharray="6 6"/>
+  <line x1="256" y1="52" x2="256" y2="460" stroke="#22283A" stroke-width="3" stroke-dasharray="6 6"/>
+  <line x1="324" y1="52" x2="324" y2="460" stroke="#22283A" stroke-width="3" stroke-dasharray="6 6"/>
+  <line x1="392" y1="52" x2="392" y2="460" stroke="#22283A" stroke-width="3" stroke-dasharray="6 6"/>
+
+  <line x1="52" y1="120" x2="460" y2="120" stroke="#22283A" stroke-width="3" stroke-dasharray="6 6"/>
+  <line x1="52" y1="188" x2="460" y2="188" stroke="#22283A" stroke-width="3" stroke-dasharray="6 6"/>
+  <line x1="52" y1="256" x2="460" y2="256" stroke="#22283A" stroke-width="3" stroke-dasharray="6 6"/>
+  <line x1="52" y1="324" x2="460" y2="324" stroke="#22283A" stroke-width="3" stroke-dasharray="6 6"/>
+  <line x1="52" y1="392" x2="460" y2="392" stroke="#22283A" stroke-width="3" stroke-dasharray="6 6"/>
+
+  <!-- Exit Gate Indicator Beam (Right Edge of Row 2) -->
+  <rect x="446" y="196" width="18" height="120" rx="9" fill="url(#exitBeam)" filter="url(#portalGlow)"/>
+
+  <!-- Obstacle Block 1: Horizontal Amber Bar (Top) -->
+  <g filter="url(#blockShadow)">
+    <rect x="70" y="70" width="190" height="52" rx="18" fill="url(#amberGrad)"/>
+    <rect x="76" y="74" width="178" height="10" rx="5" fill="#FFFFFF" opacity="0.35"/>
+    <circle cx="102" cy="96" r="5" fill="#FFFFFF" opacity="0.7"/>
+    <circle cx="228" cy="96" r="5" fill="#FFFFFF" opacity="0.7"/>
+  </g>
+
+  <!-- Obstacle Block 2: Vertical Cyan Block (Middle Column) -->
+  <g filter="url(#blockShadow)">
+    <rect x="274" y="70" width="52" height="190" rx="18" fill="url(#cyanGrad)"/>
+    <rect x="278" y="76" width="10" height="178" rx="5" fill="#FFFFFF" opacity="0.35"/>
+    <circle cx="300" cy="102" r="5" fill="#FFFFFF" opacity="0.7"/>
+    <circle cx="300" cy="228" r="5" fill="#FFFFFF" opacity="0.7"/>
+  </g>
+
+  <!-- Obstacle Block 3: Vertical Purple Block (Right) -->
+  <g filter="url(#blockShadow)">
+    <rect x="342" y="196" width="52" height="190" rx="18" fill="url(#purpleGrad)"/>
+    <rect x="346" y="202" width="10" height="178" rx="5" fill="#FFFFFF" opacity="0.35"/>
+  </g>
+
+  <!-- Obstacle Block 4: Horizontal Emerald Block (Bottom) -->
+  <g filter="url(#blockShadow)">
+    <rect x="138" y="390" width="190" height="52" rx="18" fill="url(#emeraldGrad)"/>
+    <rect x="144" y="394" width="178" height="10" rx="5" fill="#FFFFFF" opacity="0.35"/>
+  </g>
+
+  <!-- ============================================== -->
+  <!-- HERO RED TARGET BLOCK (Escaping Right into Gate) -->
+  <!-- ============================================== -->
+  <g filter="url(#heroGlow)">
+    <!-- Motion Speed Trails -->
+    <rect x="90" y="200" width="196" height="112" rx="28" fill="#FF2E56" opacity="0.2"/>
+    <rect x="130" y="200" width="196" height="112" rx="28" fill="#FF2E56" opacity="0.4"/>
+
+    <!-- Main Solid 3D Hero Body -->
+    <rect x="170" y="200" width="196" height="112" rx="28" fill="url(#redGrad)" stroke="#FFA3B5" stroke-width="5"/>
+
+    <!-- Glossy Specular Top Rim -->
+    <rect x="182" y="208" width="172" height="20" rx="10" fill="#FFFFFF" opacity="0.45"/>
+
+    <!-- Bold Escape Arrow -->
+    <path d="M 296 256 L 264 234 L 264 278 Z" fill="#FFFFFF" opacity="0.95"/>
+    <circle cx="236" cy="256" r="9" fill="#FFFFFF" opacity="0.95"/>
+
+    <!-- Golden Star Emblem -->
+    <path d="M 236 226 L 240 234 L 248 235 L 242 240 L 244 248 L 236 244 L 228 248 L 230 240 L 224 235 L 232 234 Z" fill="url(#amberGrad)"/>
+  </g>
+
+  <!-- Energy Exit Particles -->
+  <circle cx="455" cy="226" r="4" fill="#00FFB2" opacity="0.9" filter="url(#portalGlow)"/>
+  <circle cx="455" cy="286" r="4" fill="#00FFB2" opacity="0.9" filter="url(#portalGlow)"/>
+  <circle cx="430" cy="256" r="3" fill="#FFFFFF" opacity="0.9"/>
+</svg>

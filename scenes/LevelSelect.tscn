@@ -1,0 +1,228 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/level_select.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.09, 0.1, 0.14, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pill"]
+bg_color = Color(0.14, 0.16, 0.23, 0.95)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_back_btn"]
+bg_color = Color(0.18, 0.22, 0.32, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unlock_btn"]
+bg_color = Color(0.15, 0.45, 0.35, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_active"]
+bg_color = Color(0, 0.75, 0.75, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_inactive"]
+bg_color = Color(0.16, 0.2, 0.28, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prog_bg"]
+bg_color = Color(0.14, 0.16, 0.24, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prog_fill"]
+bg_color = Color(0, 0.85, 0.75, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="SafeMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="MainLayout" type="VBoxContainer" parent="SafeMargin"]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="TopBar" type="HBoxContainer" parent="SafeMargin/MainLayout"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="BackButton" type="Button" parent="SafeMargin/MainLayout/TopBar"]
+custom_minimum_size = Vector2(140, 80)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_back_btn")
+theme_override_font_sizes/font_size = 32
+text = "◀ MENU"
+
+[node name="Spacer1" type="Control" parent="SafeMargin/MainLayout/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StarsBox" type="PanelContainer" parent="SafeMargin/MainLayout/TopBar"]
+custom_minimum_size = Vector2(230, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pill")
+
+[node name="StarsLabel" type="Label" parent="SafeMargin/MainLayout/TopBar/StarsBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+text = "⭐ 0 / 600"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoinsBox" type="PanelContainer" parent="SafeMargin/MainLayout/TopBar"]
+custom_minimum_size = Vector2(180, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pill")
+
+[node name="CoinsLabel" type="Label" parent="SafeMargin/MainLayout/TopBar/CoinsBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+text = "🪙 150"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HeaderBox" type="VBoxContainer" parent="SafeMargin/MainLayout"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="WorldTitle" type="Label" parent="SafeMargin/MainLayout/HeaderBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "WORLD 1: BEGINNER ESCAPE"
+autowrap_mode = 3
+
+[node name="SubTitle" type="Label" parent="SafeMargin/MainLayout/HeaderBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0, 0.82, 0.82, 1)
+text = "Levels 1–50 • Classic Sliding Foundations"
+autowrap_mode = 3
+
+[node name="WorldProgressBox" type="VBoxContainer" parent="SafeMargin/MainLayout/HeaderBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="WorldProgressBar" type="ProgressBar" parent="SafeMargin/MainLayout/HeaderBox/WorldProgressBox"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_prog_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_prog_fill")
+max_value = 50.0
+value = 0.0
+show_percentage = false
+
+[node name="WorldStatsLabel" type="Label" parent="SafeMargin/MainLayout/HeaderBox/WorldProgressBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.85, 0.9, 1, 1)
+text = "⭐ Stars: 0/150 • 👑 Crowns: 0/50 • 🔓 Cleared: 0/50"
+autowrap_mode = 3
+
+[node name="WorldTabs" type="HBoxContainer" parent="SafeMargin/MainLayout"]
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Tab1" type="Button" parent="SafeMargin/MainLayout/WorldTabs"]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_tab_active")
+theme_override_font_sizes/font_size = 22
+text = "W1: Beginner"
+
+[node name="Tab2" type="Button" parent="SafeMargin/MainLayout/WorldTabs"]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_tab_inactive")
+theme_override_font_sizes/font_size = 22
+text = "W2: Traffic"
+
+[node name="Tab3" type="Button" parent="SafeMargin/MainLayout/WorldTabs"]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_tab_inactive")
+theme_override_font_sizes/font_size = 22
+text = "W3: Frost"
+
+[node name="Tab4" type="Button" parent="SafeMargin/MainLayout/WorldTabs"]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_tab_inactive")
+theme_override_font_sizes/font_size = 22
+text = "W4: Laser"
+
+[node name="Scroll" type="ScrollContainer" parent="SafeMargin/MainLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="GridMargin" type="MarginContainer" parent="SafeMargin/MainLayout/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 24
+
+[node name="GridContainer" type="GridContainer" parent="SafeMargin/MainLayout/Scroll/GridMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 18
+theme_override_constants/v_separation = 18
+columns = 5

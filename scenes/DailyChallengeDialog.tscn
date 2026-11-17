@@ -1,0 +1,175 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/daily_challenge_dialog.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal"]
+bg_color = Color(0.1, 0.12, 0.18, 0.98)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.24, 0.3, 0.44, 0.85)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 28
+shadow_offset = Vector2(0, 14)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_streak"]
+bg_color = Color(0.18, 0.14, 0.08, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.65, 0.1, 0.75)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_btn"]
+bg_color = Color(0.06, 0.72, 0.58, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(0.06, 0.72, 0.58, 0.35)
+shadow_size = 14
+shadow_offset = Vector2(0, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_close_btn"]
+bg_color = Color(0.18, 0.22, 0.32, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.28, 0.35, 0.5, 0.6)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="DailyChallengeDialog" type="Control"]
+z_index = 150
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.05, 0.08, 0.85)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModalPanel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(880, 940)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/ModalPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 26
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/ModalPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.75, 0.2, 1)
+theme_override_font_sizes/font_size = 42
+text = "🔥 DAILY CHALLENGE"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DateLabel" type="Label" parent="CenterContainer/ModalPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.72, 0.85, 1)
+theme_override_font_sizes/font_size = 26
+text = "TODAY: NOV 11, 2026"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="StreakBox" type="PanelContainer" parent="CenterContainer/ModalPanel/VBox"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_streak")
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/ModalPanel/VBox/StreakBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/ModalPanel/VBox/StreakBox/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="StreakNumLabel" type="Label" parent="CenterContainer/ModalPanel/VBox/StreakBox/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.25, 1)
+theme_override_font_sizes/font_size = 48
+text = "🔥 5 DAY STREAK"
+horizontal_alignment = 1
+
+[node name="StreakDescLabel" type="Label" parent="CenterContainer/ModalPanel/VBox/StreakBox/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 0.9)
+theme_override_font_sizes/font_size = 22
+text = "Solve today's puzzle to ignite your flame!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CalendarGrid" type="HBoxContainer" parent="CenterContainer/ModalPanel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Spacer" type="Control" parent="CenterContainer/ModalPanel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayButton" type="Button" parent="CenterContainer/ModalPanel/VBox"]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_play_btn")
+text = "PLAY TODAY'S PUZZLE ▶"
+clip_text = true
+
+[node name="CloseButton" type="Button" parent="CenterContainer/ModalPanel/VBox"]
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.9, 0.98, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_close_btn")
+text = "BACK TO HOME"
+clip_text = true

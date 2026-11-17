@@ -1,0 +1,187 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/tutorial_guide.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_banner"]
+bg_color = Color(0.12, 0.15, 0.22, 0.96)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.18, 0.75, 0.70, 0.9)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 16
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_badge"]
+bg_color = Color(0.18, 0.24, 0.36, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
+bg_color = Color(0.22, 0.28, 0.42, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_close"]
+bg_color = Color(0.42, 0.20, 0.24, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_highlight"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.85, 0.2, 0.95)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(1, 0.85, 0.2, 0.35)
+shadow_size = 14
+
+[node name="TutorialGuide" type="Control"]
+z_index = 50
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="Banner" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(880, 140)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.0
+offset_top = -630.0
+offset_right = 440.0
+offset_bottom = -490.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_banner")
+
+[node name="Margin" type="MarginContainer" parent="Banner"]
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="Banner/Margin"]
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="Banner/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/separation = 12
+
+[node name="Badge" type="PanelContainer" parent="Banner/Margin/VBox/Header"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="BadgeMargin" type="MarginContainer" parent="Banner/Margin/VBox/Header/Badge"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="StepLabel" type="Label" parent="Banner/Margin/VBox/Header/Badge/BadgeMargin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 22
+text = "💡 HINT • STEP 1 OF 3"
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Banner/Margin/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="PrevBtn" type="Button" parent="Banner/Margin/VBox/Header"]
+custom_minimum_size = Vector2(64, 46)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_font_sizes/font_size = 24
+text = "◀"
+
+[node name="NextBtn" type="Button" parent="Banner/Margin/VBox/Header"]
+custom_minimum_size = Vector2(64, 46)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_font_sizes/font_size = 24
+text = "▶"
+
+[node name="CloseBtn" type="Button" parent="Banner/Margin/VBox/Header"]
+custom_minimum_size = Vector2(64, 46)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_close")
+theme_override_font_sizes/font_size = 24
+text = "✕"
+
+[node name="InstructionLabel" type="Label" parent="Banner/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "Slide Cyan Block 👇 down 2 spaces"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HighlightBox" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_highlight")
+
+[node name="HandCursor" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="HandLabel" type="Label" parent="HandCursor"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 72
+text = "👉"
+horizontal_alignment = 1
+vertical_alignment = 1

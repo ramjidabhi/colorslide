@@ -1,0 +1,3 @@
+@echo off
+echo Opening Color Escape in Godot 4 Editor...
+start "" "C:\Users\RAM\Downloads\Godot_v4.7.2-stable_mono_win64\Godot_v4.7.2-stable_mono_win64\Godot_v4.7.2-stable_mono_win64.exe" -e --path "%~dp0"

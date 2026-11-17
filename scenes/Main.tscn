@@ -1,0 +1,383 @@
+[gd_scene load_steps=16 format=3 uid="uid://d4e7g3x8yq12p"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/GameBoard.tscn" id="2_board"]
+[ext_resource type="PackedScene" path="res://scenes/WinDialog.tscn" id="3_windialog"]
+[ext_resource type="PackedScene" path="res://scenes/TutorialGuide.tscn" id="4_tutorial"]
+[ext_resource type="PackedScene" path="res://scenes/StarChestDialog.tscn" id="5_chest"]
+[ext_resource type="PackedScene" path="res://scenes/ShopDialog.tscn" id="6_shop"]
+[ext_resource type="PackedScene" path="res://scenes/LuckyWheelDialog.tscn" id="7_wheel"]
+[ext_resource type="PackedScene" path="res://scenes/PiggyBankDialog.tscn" id="8_piggy"]
+[ext_resource type="PackedScene" path="res://scenes/BoosterGuideDialog.tscn" id="9_booster_guide"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.06, 0.07, 0.11, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_header_card"]
+bg_color = Color(0.11, 0.14, 0.22, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 6
+border_color = Color(0.2, 0.28, 0.44, 0.9)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 14
+shadow_offset = Vector2(0, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctrl_btn"]
+bg_color = Color(0.18, 0.22, 0.32, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 8
+border_color = Color(0.1, 0.13, 0.2, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 10
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hint_btn"]
+bg_color = Color(1, 0.72, 0.12, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 10
+border_color = Color(0.72, 0.48, 0.04, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+shadow_color = Color(1, 0.72, 0.12, 0.45)
+shadow_size = 18
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_undo_btn"]
+bg_color = Color(0.2, 0.26, 0.38, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 8
+border_color = Color(0.11, 0.15, 0.24, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 10
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_coins"]
+bg_color = Color(0.14, 0.17, 0.26, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 6
+border_color = Color(0.45, 0.38, 0.18, 0.8)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 10
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pill"]
+bg_color = Color(0.1, 0.12, 0.18, 0.8)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smash_btn"]
+bg_color = Color(0.24, 0.12, 0.18, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 6
+border_color = Color(0.9, 0.25, 0.35, 0.8)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shrink_btn"]
+bg_color = Color(0.1, 0.2, 0.24, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 6
+border_color = Color(0.15, 0.8, 0.85, 0.8)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crane_btn"]
+bg_color = Color(0.22, 0.18, 0.12, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 6
+border_color = Color(0.95, 0.72, 0.2, 0.8)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="SafeMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 50
+
+[node name="MainLayout" type="VBoxContainer" parent="SafeMargin"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="TopBar" type="HBoxContainer" parent="SafeMargin/MainLayout"]
+custom_minimum_size = Vector2(0, 114)
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="HomeButton" type="Button" parent="SafeMargin/MainLayout/TopBar"]
+custom_minimum_size = Vector2(104, 104)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ctrl_btn")
+theme_override_font_sizes/font_size = 44
+text = "🏠"
+
+[node name="HeaderCard" type="PanelContainer" parent="SafeMargin/MainLayout/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_header_card")
+
+[node name="Margin" type="MarginContainer" parent="SafeMargin/MainLayout/TopBar/HeaderCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="SafeMargin/MainLayout/TopBar/HeaderCard/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="WorldBadge" type="Label" parent="SafeMargin/MainLayout/TopBar/HeaderCard/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.85, 0.8, 1)
+theme_override_font_sizes/font_size = 19
+text = "⚡ WORLD 4 • LASER FACILITY"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="LevelNumberLabel" type="Label" parent="SafeMargin/MainLayout/TopBar/HeaderCard/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 34
+text = "LEVEL 200"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="LevelSubLabel" type="Label" parent="SafeMargin/MainLayout/TopBar/HeaderCard/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.75, 0.45, 1)
+theme_override_font_sizes/font_size = 20
+text = "OMEGA LOCKDOWN"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="CoinsBox" type="PanelContainer" parent="SafeMargin/MainLayout/TopBar"]
+custom_minimum_size = Vector2(190, 104)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_coins")
+
+[node name="CoinsLabel" type="Label" parent="SafeMargin/MainLayout/TopBar/CoinsBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.25, 1)
+theme_override_font_sizes/font_size = 28
+text = "🪙 735"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoardCenter" type="CenterContainer" parent="SafeMargin/MainLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BoardContainer" type="Control" parent="SafeMargin/MainLayout/BoardCenter"]
+custom_minimum_size = Vector2(840, 840)
+layout_mode = 2
+
+[node name="GameBoard" parent="SafeMargin/MainLayout/BoardCenter/BoardContainer" instance=ExtResource("2_board")]
+layout_mode = 1
+
+[node name="StatusPill" type="PanelContainer" parent="SafeMargin/MainLayout"]
+custom_minimum_size = Vector2(320, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_pill")
+
+[node name="Margin" type="MarginContainer" parent="SafeMargin/MainLayout/StatusPill"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="StatusLabel" type="Label" parent="SafeMargin/MainLayout/StatusPill/Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.82, 1)
+theme_override_font_sizes/font_size = 22
+text = "Moves: 0 • Slide Red to Exit 👉"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoosterBar" type="HBoxContainer" parent="SafeMargin/MainLayout"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="SmashButton" type="Button" parent="SafeMargin/MainLayout/BoosterBar"]
+custom_minimum_size = Vector2(0, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_smash_btn")
+theme_override_font_sizes/font_size = 26
+text = "🔨 SMASH"
+clip_text = true
+
+[node name="ShrinkButton" type="Button" parent="SafeMargin/MainLayout/BoosterBar"]
+custom_minimum_size = Vector2(0, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_shrink_btn")
+theme_override_font_sizes/font_size = 26
+text = "✂️ SHRINK"
+clip_text = true
+
+[node name="CraneButton" type="Button" parent="SafeMargin/MainLayout/BoosterBar"]
+custom_minimum_size = Vector2(0, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_crane_btn")
+theme_override_font_sizes/font_size = 26
+text = "🧲 CRANE"
+clip_text = true
+
+[node name="BoosterHelpButton" type="Button" parent="SafeMargin/MainLayout/BoosterBar"]
+custom_minimum_size = Vector2(80, 76)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ctrl_btn")
+theme_override_font_sizes/font_size = 28
+text = "❓"
+clip_text = true
+
+[node name="ActionDock" type="HBoxContainer" parent="SafeMargin/MainLayout"]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="UndoButton" type="Button" parent="SafeMargin/MainLayout/ActionDock"]
+custom_minimum_size = Vector2(160, 104)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_undo_btn")
+theme_override_font_sizes/font_size = 28
+text = "↶ UNDO"
+clip_text = true
+
+[node name="HintButton" type="Button" parent="SafeMargin/MainLayout/ActionDock"]
+custom_minimum_size = Vector2(280, 104)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_hint_btn")
+theme_override_colors/font_color = Color(0.12, 0.08, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "💡 HINT"
+clip_text = true
+
+[node name="RestartButton" type="Button" parent="SafeMargin/MainLayout/ActionDock"]
+custom_minimum_size = Vector2(160, 104)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ctrl_btn")
+theme_override_font_sizes/font_size = 28
+text = "↺ RESET"
+clip_text = true
+
+[node name="SoundButton" type="Button" parent="SafeMargin/MainLayout/ActionDock"]
+custom_minimum_size = Vector2(104, 104)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ctrl_btn")
+theme_override_font_sizes/font_size = 38
+text = "🔊"
+
+[node name="TutorialGuide" parent="." instance=ExtResource("4_tutorial")]
+layout_mode = 1
+
+[node name="WinDialog" parent="." instance=ExtResource("3_windialog")]
+visible = false
+layout_mode = 1
+
+[node name="StarChestDialog" parent="." instance=ExtResource("5_chest")]
+visible = false
+layout_mode = 1
+
+[node name="ShopDialog" parent="." instance=ExtResource("6_shop")]
+visible = false
+layout_mode = 1
+
+[node name="LuckyWheelDialog" parent="." instance=ExtResource("7_wheel")]
+visible = false
+layout_mode = 1
+
+[node name="PiggyBankDialog" parent="." instance=ExtResource("8_piggy")]
+visible = false
+layout_mode = 1
+
+[node name="BoosterGuideDialog" parent="." instance=ExtResource("9_booster_guide")]
+visible = false
+layout_mode = 1

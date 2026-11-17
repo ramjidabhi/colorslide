@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/game_board.gd" id="1_script"]
+
+[sub_resource type="Curve" id="Curve_particles"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="GameBoard" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 840.0
+offset_bottom = 840.0
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="BlocksContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="ExitGate" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 836.0
+offset_top = 286.0
+offset_right = 852.0
+offset_bottom = 414.0
+mouse_filter = 2
+
+[node name="WinParticles" type="CPUParticles2D" parent="."]
+position = Vector2(840, 350)
+emitting = false
+amount = 40
+lifetime = 1.2
+one_shot = true
+explosiveness = 0.85
+spread = 180.0
+gravity = Vector2(0, 380)
+initial_velocity_min = 120.0
+initial_velocity_max = 280.0
+scale_amount_min = 8.0
+scale_amount_max = 16.0
+scale_amount_curve = SubResource("Curve_particles")
+color = Color(1, 0.843137, 0, 1)

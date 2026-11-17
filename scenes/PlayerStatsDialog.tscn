@@ -1,0 +1,331 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/player_stats_dialog.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.11, 0.13, 0.19, 0.98)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.2, 0.25, 0.38, 1)
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 28
+shadow_offset = Vector2(0, 14)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.16, 0.19, 0.28, 0.9)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25, 0.3, 0.44, 0.8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
+bg_color = Color(0.08, 0.72, 0.65, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.12, 0.82, 0.74, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="PlayerStatsDialog" type="Control"]
+z_index = 100
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.05, 0.08, 0.75)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModalPanel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(760, 1100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/ModalPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = 36.0
+offset_right = -36.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+
+[node name="HeaderBox" type="VBoxContainer" parent="CenterContainer/ModalPanel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="CenterContainer/ModalPanel/VBox/HeaderBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.25, 1)
+theme_override_font_sizes/font_size = 40
+text = "📊 PLAYER JOURNEY"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CenterContainer/ModalPanel/VBox/HeaderBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.75, 0.85, 1)
+theme_override_font_sizes/font_size = 20
+text = "Lifetime Stats & Puzzle Mastery"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/ModalPanel/VBox"]
+layout_mode = 2
+
+[node name="ContentScroll" type="ScrollContainer" parent="CenterContainer/ModalPanel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="CardsVBox" type="VBoxContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="LevelsCard" type="PanelContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/LevelsCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBox" type="HBoxContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/LevelsCard/Margin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/LevelsCard/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "🏆 Puzzles Completed"
+
+[node name="Value" type="Label" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/LevelsCard/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.85, 0.7, 1)
+theme_override_font_sizes/font_size = 22
+text = "0 / 200 (0.0%)"
+
+[node name="StarsCard" type="PanelContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/StarsCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBox" type="HBoxContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/StarsCard/Margin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/StarsCard/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "⭐ Total Stars Earned"
+
+[node name="Value" type="Label" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/StarsCard/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.25, 1)
+theme_override_font_sizes/font_size = 22
+text = "⭐ 0 / 600"
+
+[node name="CrownsCard" type="PanelContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/CrownsCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBox" type="HBoxContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/CrownsCard/Margin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/CrownsCard/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "👑 Par Master Crowns"
+
+[node name="Value" type="Label" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/CrownsCard/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.7, 0.2, 1)
+theme_override_font_sizes/font_size = 22
+text = "👑 0 / 200"
+
+[node name="PureCrownsCard" type="PanelContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/PureCrownsCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBox" type="HBoxContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/PureCrownsCard/Margin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/PureCrownsCard/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "🛡️ Pure (Booster-Free) Crowns"
+
+[node name="Value" type="Label" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/PureCrownsCard/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "🛡️ 0 (No Boosters)"
+
+[node name="MovesCard" type="PanelContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/MovesCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBox" type="HBoxContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/MovesCard/Margin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/MovesCard/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "👣 Lifetime Moves Made"
+
+[node name="Value" type="Label" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/MovesCard/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_font_sizes/font_size = 22
+text = "👣 0 moves"
+
+[node name="PlaytimeCard" type="PanelContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/PlaytimeCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBox" type="HBoxContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/PlaytimeCard/Margin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/PlaytimeCard/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "⏱️ Total Solve Time"
+
+[node name="Value" type="Label" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/PlaytimeCard/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_font_sizes/font_size = 22
+text = "⏱️ 0h 00m"
+
+[node name="StreakCard" type="PanelContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/StreakCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBox" type="HBoxContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/StreakCard/Margin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/StreakCard/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "🔥 Daily Mind Forge Streak"
+
+[node name="Value" type="Label" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/StreakCard/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5, 0.2, 1)
+theme_override_font_sizes/font_size = 22
+text = "🔥 0 Days"
+
+[node name="BlitzCard" type="PanelContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/BlitzCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBox" type="HBoxContainer" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/BlitzCard/Margin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/BlitzCard/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "⚡ 60s Blitz High Score"
+
+[node name="Value" type="Label" parent="CenterContainer/ModalPanel/VBox/ContentScroll/CardsVBox/BlitzCard/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.2, 1)
+theme_override_font_sizes/font_size = 22
+text = "⚡ 0 pts"
+
+[node name="CloseButton" type="Button" parent="CenterContainer/ModalPanel/VBox"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn")
+text = "CLOSE"

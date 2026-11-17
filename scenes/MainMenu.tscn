@@ -1,0 +1,319 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/SettingsDialog.tscn" id="2_settings"]
+[ext_resource type="PackedScene" path="res://scenes/DailyChallengeDialog.tscn" id="3_daily"]
+[ext_resource type="PackedScene" path="res://scenes/ShopDialog.tscn" id="4_shop"]
+[ext_resource type="PackedScene" path="res://scenes/LuckyWheelDialog.tscn" id="5_wheel"]
+[ext_resource type="PackedScene" path="res://scenes/PiggyBankDialog.tscn" id="6_piggy"]
+[ext_resource type="PackedScene" path="res://scenes/BlitzModeDialog.tscn" id="7_blitz"]
+[ext_resource type="Script" path="res://scripts/hero_preview.gd" id="8_hero_preview"]
+[ext_resource type="PackedScene" path="res://scenes/PlayerStatsDialog.tscn" id="9_stats"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.09, 0.1, 0.14, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pill"]
+bg_color = Color(0.14, 0.16, 0.23, 0.95)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(0, 0, 0, 0.25)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hero"]
+bg_color = Color(0.13, 0.15, 0.22, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 18
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_daily_btn"]
+bg_color = Color(0.85, 0.52, 0.08, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.8, 0.25, 0.9)
+shadow_color = Color(0.85, 0.52, 0.08, 0.4)
+shadow_size = 16
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_btn"]
+bg_color = Color(0.06, 0.72, 0.58, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+shadow_color = Color(0.06, 0.72, 0.58, 0.4)
+shadow_size = 16
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_levels_btn"]
+bg_color = Color(0.18, 0.22, 0.32, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+shadow_color = Color(0, 0, 0, 0.25)
+shadow_size = 10
+shadow_offset = Vector2(0, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blitz_btn"]
+bg_color = Color(1, 0.55, 0.1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 6
+border_color = Color(0.72, 0.32, 0.02, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+shadow_color = Color(1, 0.55, 0.1, 0.4)
+shadow_size = 14
+shadow_offset = Vector2(0, 7)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="SafeMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 50
+
+[node name="MainLayout" type="VBoxContainer" parent="SafeMargin"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="TopBar" type="HBoxContainer" parent="SafeMargin/MainLayout"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="CoinsBox" type="PanelContainer" parent="SafeMargin/MainLayout/TopBar"]
+custom_minimum_size = Vector2(170, 84)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pill")
+
+[node name="CoinsLabel" type="Label" parent="SafeMargin/MainLayout/TopBar/CoinsBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+text = "🪙 150"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PiggyButton" type="Button" parent="SafeMargin/MainLayout/TopBar"]
+custom_minimum_size = Vector2(150, 84)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_pill")
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(1, 0.65, 0.78, 1)
+text = "🐷 250"
+
+[node name="WheelButton" type="Button" parent="SafeMargin/MainLayout/TopBar"]
+custom_minimum_size = Vector2(150, 84)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_pill")
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(1, 0.85, 0.25, 1)
+text = "🎡 SPIN"
+
+[node name="ShopButton" type="Button" parent="SafeMargin/MainLayout/TopBar"]
+custom_minimum_size = Vector2(100, 84)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_pill")
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(0.9, 0.94, 1, 1)
+text = "🛍️"
+
+[node name="Spacer" type="Control" parent="SafeMargin/MainLayout/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatsButton" type="Button" parent="SafeMargin/MainLayout/TopBar"]
+custom_minimum_size = Vector2(96, 84)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_pill")
+theme_override_font_sizes/font_size = 36
+text = "📊"
+
+[node name="SettingsButton" type="Button" parent="SafeMargin/MainLayout/TopBar"]
+custom_minimum_size = Vector2(96, 84)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_pill")
+theme_override_font_sizes/font_size = 38
+text = "⚙️"
+
+[node name="HeroCenter" type="CenterContainer" parent="SafeMargin/MainLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="SafeMargin/MainLayout/HeroCenter"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="TitleBox" type="VBoxContainer" parent="SafeMargin/MainLayout/HeroCenter/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="MainTitle" type="Label" parent="SafeMargin/MainLayout/HeroCenter/VBox/TitleBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 68
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "UNBLOCK PUZZLE"
+horizontal_alignment = 1
+
+[node name="SubTitle" type="Label" parent="SafeMargin/MainLayout/HeroCenter/VBox/TitleBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+theme_override_colors/font_color = Color(0, 0.82, 0.82, 1)
+text = "SLIDE ESCAPE"
+horizontal_alignment = 1
+
+[node name="HeroCard" type="PanelContainer" parent="SafeMargin/MainLayout/HeroCenter/VBox"]
+custom_minimum_size = Vector2(760, 270)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hero")
+
+[node name="Center" type="CenterContainer" parent="SafeMargin/MainLayout/HeroCenter/VBox/HeroCard"]
+layout_mode = 2
+
+[node name="ArtVBox" type="VBoxContainer" parent="SafeMargin/MainLayout/HeroCenter/VBox/HeroCard/Center"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="HeroPreview" type="Control" parent="SafeMargin/MainLayout/HeroCenter/VBox/HeroCard/Center/ArtVBox"]
+custom_minimum_size = Vector2(360, 170)
+layout_mode = 2
+script = ExtResource("8_hero_preview")
+
+[node name="Tagline" type="Label" parent="SafeMargin/MainLayout/HeroCenter/VBox/HeroCard/Center/ArtVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.8, 0.85, 0.95, 0.9)
+text = "Slide the obstacles. Free the Red Block."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ProgressBadge" type="Label" parent="SafeMargin/MainLayout/HeroCenter/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(1, 0.78, 0.25, 1)
+text = "LEVEL 1 UNLOCKED • 200 LEVELS READY"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ButtonsVBox" type="VBoxContainer" parent="SafeMargin/MainLayout"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="DailyButton" type="Button" parent="SafeMargin/MainLayout/ButtonsVBox"]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_daily_btn")
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "🔥 DAILY CHALLENGE ▶"
+clip_text = true
+
+[node name="PlayButton" type="Button" parent="SafeMargin/MainLayout/ButtonsVBox"]
+custom_minimum_size = Vector2(0, 108)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_play_btn")
+theme_override_font_sizes/font_size = 34
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "START PLAYING ▶"
+clip_text = true
+
+[node name="LevelsButton" type="Button" parent="SafeMargin/MainLayout/ButtonsVBox"]
+custom_minimum_size = Vector2(0, 92)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_levels_btn")
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.9, 0.94, 1, 1)
+text = "📋 LEVEL SELECT (1–200)"
+clip_text = true
+
+[node name="BlitzButton" type="Button" parent="SafeMargin/MainLayout/ButtonsVBox"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_blitz_btn")
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "⚡ RUSH HOUR BLITZ (60s) ▶"
+clip_text = true
+
+[node name="FooterLabel" type="Label" parent="SafeMargin/MainLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.5, 0.55, 0.65, 0.8)
+text = "Offline Brain Puzzle • 200 Verified Levels"
+horizontal_alignment = 1
+
+[node name="SettingsDialog" parent="." instance=ExtResource("2_settings")]
+visible = false
+layout_mode = 1
+
+[node name="DailyChallengeDialog" parent="." instance=ExtResource("3_daily")]
+visible = false
+layout_mode = 1
+
+[node name="ShopDialog" parent="." instance=ExtResource("4_shop")]
+visible = false
+layout_mode = 1
+
+[node name="LuckyWheelDialog" parent="." instance=ExtResource("5_wheel")]
+visible = false
+layout_mode = 1
+
+[node name="PiggyBankDialog" parent="." instance=ExtResource("6_piggy")]
+visible = false
+layout_mode = 1
+
+[node name="BlitzModeDialog" parent="." instance=ExtResource("7_blitz")]
+visible = false
+layout_mode = 1
+
+[node name="PlayerStatsDialog" parent="." instance=ExtResource("9_stats")]
+visible = false
+layout_mode = 1

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "602919485189",
+    "project_id": "examveda-54b88",
+    "storage_bucket": "examveda-54b88.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602919485189:android:cc45865b61f9aebdb1416c",
+        "android_client_info": {
+          "package_name": "com.colorslide.unblockescape"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj1PndVfO5cYOj99UmgYaT_wfNZciV2u4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

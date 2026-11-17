@@ -1,0 +1,202 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/win_dialog.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal"]
+bg_color = Color(0.12, 0.14, 0.2, 0.98)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.24, 0.28, 0.4, 0.8)
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 28
+shadow_offset = Vector2(0, 14)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_coins_badge"]
+bg_color = Color(0.18, 0.16, 0.1, 0.9)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.8, 0.2, 0.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_next_btn"]
+bg_color = Color(0.08, 0.76, 0.55, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(0.08, 0.76, 0.55, 0.4)
+shadow_size = 12
+shadow_offset = Vector2(0, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_replay_btn"]
+bg_color = Color(0.2, 0.24, 0.34, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.35, 0.5, 0.6)
+
+[node name="WinDialog" type="Control"]
+z_index = 100
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.05, 0.08, 0.82)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModalPanel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(880, 780)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/ModalPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = 40.0
+offset_right = -44.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/ModalPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "LEVEL 1 CLEARED!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CrownBadge" type="Label" parent="CenterContainer/ModalPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+text = "👑 MASTER CROWN AWARDED! (+50 BONUS COINS)"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="StarsContainer" type="HBoxContainer" parent="CenterContainer/ModalPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 28
+alignment = 1
+
+[node name="Star1" type="Label" parent="CenterContainer/ModalPanel/VBoxContainer/StarsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 76
+text = "★"
+horizontal_alignment = 1
+
+[node name="Star2" type="Label" parent="CenterContainer/ModalPanel/VBoxContainer/StarsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 94
+text = "★"
+horizontal_alignment = 1
+
+[node name="Star3" type="Label" parent="CenterContainer/ModalPanel/VBoxContainer/StarsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 76
+text = "★"
+horizontal_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="CenterContainer/ModalPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0, 0.85, 0.85, 1)
+text = "🎉 PUZZLE SOLVED!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CoinsCenter" type="CenterContainer" parent="CenterContainer/ModalPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="CoinsBadge" type="PanelContainer" parent="CenterContainer/ModalPanel/VBoxContainer/CoinsCenter"]
+custom_minimum_size = Vector2(300, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_coins_badge")
+
+[node name="CoinsLabel" type="Label" parent="CenterContainer/ModalPanel/VBoxContainer/CoinsCenter/CoinsBadge"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+text = "🪙 +45 Coins"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="CenterContainer/ModalPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="NextButton" type="Button" parent="CenterContainer/ModalPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_next_btn")
+theme_override_font_sizes/font_size = 34
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "NEXT LEVEL ▶"
+clip_text = true
+
+[node name="SecondaryButtons" type="HBoxContainer" parent="CenterContainer/ModalPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ReplayButton" type="Button" parent="CenterContainer/ModalPanel/VBoxContainer/SecondaryButtons"]
+custom_minimum_size = Vector2(0, 86)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_replay_btn")
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.9, 0.94, 1, 1)
+text = "↺ Replay"
+clip_text = true
+
+[node name="LevelsButton" type="Button" parent="CenterContainer/ModalPanel/VBoxContainer/SecondaryButtons"]
+custom_minimum_size = Vector2(0, 86)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_replay_btn")
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.9, 0.94, 1, 1)
+text = "📋 Levels"
+clip_text = true
